@@ -1,4 +1,4 @@
-
+![Screenshot](https://github.com/Ryckoh/Crop-prediction-system-NPK/assets/159196128/de32496a-71b1-4bb9-8980-c059d596342c)
 Crop Prediction System Documentation
 This Crop Recommendation System utilizes machine learning to predict the optimal crop for a given set of environmental and soil parameters. The system includes data preprocessing, model training, Flask integration for a web application, and visualization.
 
