@@ -125,6 +125,10 @@ nav .nav-links li a::after {
     width: 400px;
     margin: 35px auto;
 }
+.landing-text h2{
+    color: whitesmoke;
+    font-size: 19px;
+}
 .landing-text p{
     color: white;
     font-size: 24px;
