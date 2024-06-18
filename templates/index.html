@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIOFARM SYSTEM</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://kit.fontawesome.com/dbed6b6114.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Smooth scrolling for navigation links
+            $('nav a').click(function(event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $( $.attr(this, 'href') ).offset().top
+                }, 500);
+            });
+            
+            // Smooth scrolling for the "Get Started" button
+            $('.btn').click(function(event) {
+                event.preventDefault();
+                $('html, body').animate({
+                    scrollTop: $( $.attr(this, 'href') ).offset().top
+                }, 500);
+            });
+        });
+    </script>
+</head>
+<body>
+    <style>
+        body {background-image: url("../static/header.jpg");}
+    </style>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <h1>BIOFARM.</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#form-section">Predict</a></li>
+            <li><a href="#how-it-works">Yield Link</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Landing Page -->
+    <section id="home" class="landing-page">
+        <div class="overlay">
+            <div class="landing-text">
+                <h1>Hello, Welcome to Biofarm Crop Prediction System</h1>
+                <p>Helping you predict the best crops to grow based on soil and weather conditions.</p>
+                <p>Harnessing cutting-edge data science, we help farmers boost yields, conserve resources,
+                    and build climate resilience by suggesting suitable high-performance crop varieties optimized
+                    for their precise conditions.
+                </p>
+                <h3>Max Yield | Min Risk</h3>
+                <a href="#form-section" class="btn">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Section -->
+    <div id="form-section" class="container">
+        <h1>Crop Prediction System</h1>
+        <form method="post" action="{{ url_for('predict') }}#form-section">
+            <label for="N">Nitrogen Content:</label>
+            <input type="text" name="N" id="N" required>
+
+            <label for="P">Phosphorus Content:</label>
+            <input type="text" name="P" id="P" required>
+
+            <label for="K">Potassium Content:</label>
+            <input type="text" name="K" id="K" required>
+
+            <label for="temperature">Temperature (°C):</label>
+            <input type="text" name="temperature" id="temperature" required>
+
+            <label for="humidity">Humidity (%):</label>
+            <input type="text" name="humidity" id="humidity" required>
+
+            <label for="ph">Soil pH:</label>
+            <input type="text" name="ph" id="ph" required>
+
+            <label for="rainfall">Rainfall (mm):</label>
+            <input type="text" name="rainfall" id="rainfall" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        <div>
+            {% if prediction_text %}
+                <p>{{ prediction_text }}</p>
+            {% endif %}
+          </div>
+    </div>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="how-it-works-container">
+            <div class="how-it-works-image">
+                <img src="{{ url_for('static', filename='tractor.png') }}" alt="img" width="600" height="600">
+                <div class = "icon-overlay flex">
+                    <i class = "fab fa-google"></i>
+                </div>
+            </div>
+            <div class="how-it-works-text">
+                <h2>If you want to know more about the market Trends, different crop prizes and where they are doing best,
+                    tap the link below and hope you enjoy. </h2>
+                <p>"Below is a brief description of how the system works..."</p>
+                <h3> 1. SELECT THE CROP YOU`RE INTERESTED IN- Get personalized recommendations on the most profitable crops to plant based on historical climate data, soil conditions, and market prices in your area.</h3>
+                <h3> 2. PREDICTIONS OF THE SELECTED CROP IS DISPLAYED- Machine learning algorithms analyze historical data along with real-time field variables to predict expected yields, benchmark performance, and alert of potential crop threats early.</h3>
+                <h3> 3. SELL MARKETPLACES ACCESS- We provide to farmers the access to commodity market prices, trends  - helping to maximize profits.</h3>
+                
+                <p>"Our promise centers around delivering exceptional value to our customers, ensuring that our services consistently meet and exceed their expectations."</p>
+                <a href="http://127.0.0.1:5000" class="btn">Try It Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-section">
+      <div>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+254 115 208 127</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png" /></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h2>erickngilakavesu@gmail.com</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>Kiambu, Kenya</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+    <!-- Footer -->
+    <section id="footer">
+        <div class="footer-container">
+            <div class="brand">
+                <h1><span>BIO</span>FARM <span>SYSTEM</span></h1>
+            </div>
+            <h2>Elevating Your Farming Experience with Biofarm.</h2>
+            <h3>Max Yield | Min Risk</h3>
+            <p>&copy; 2024 BIOFARM SYSTEM. All rights reserved.</p>
+        </div>
+    </section>
+    <!-- End Footer -->
+</body>
+</html>
